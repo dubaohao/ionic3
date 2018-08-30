@@ -41,7 +41,7 @@
 
 ***
 [Android手机apk安装包下载](APP开发中)
-
+链接无效正在开发中
 
 兼容不用手机
 <span ionic-text color="primary" showWhen="ios">取消</span>

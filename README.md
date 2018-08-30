@@ -1,18 +1,26 @@
 # ionic3 APP小白开发
+
 * 安装ionic和cordova <br>
 `npm install -g ionic cordova`
+
 * 安装node.js和npm，到指定官网下载安装即可<br>
 `node官网:`https://nodejs.org/en/
+
 * 下载本文代码或是自己初始化一个项目(建议使用tabs）<br>
 `ionic start firstAPP tabs`
+
 * 打开项目目录 
 `cd firstApp`
+
 * 初始化开始命令，安装相应的modules和plugins <br>
 `npm install`
+
 * 运行命令 <br>
 `ionic serve`
-<<<<<<< HEAD
-=======
+
+*新增页面文件<br>
+`ionic g`选择`page`
+或者直接 `ionic g page XXX`
 
 
 

@@ -40,7 +40,7 @@
 
 
 ***
-[Android手机apk安装包下载](http://123.206.8.217/downloads/TripTrip.apk)
+[Android手机apk安装包下载](APP开发中)
 
 
 兼容不用手机

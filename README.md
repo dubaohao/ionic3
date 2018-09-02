@@ -1,4 +1,4 @@
-# ionic3 APP小白开发
+# ionic3 APP小白开发 模仿知乎
 
 * 安装ionic和cordova <br>
 `npm install -g ionic cordova`

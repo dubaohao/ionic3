@@ -1,0 +1,77 @@
+<!--
+  Generated template for the InterestUserPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-row>
+            <ion-col col-2>
+                <ion-title item-start>
+                    <ion-icon name="back"></ion-icon>
+                </ion-title>
+            </ion-col>
+            <ion-col col-7>
+                <ion-title>
+                    用户广场
+                </ion-title>
+            </ion-col>
+            <ion-col col-2>
+                <ion-title item-end>
+                    <ion-icon name="share"></ion-icon>
+                </ion-title>
+            </ion-col>
+            <ion-col col-1>
+                <ion-title item-end>
+                    <ion-icon name="more"></ion-icon>
+                </ion-title>
+            </ion-col>
+        </ion-row>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content no-padding>
+    <ion-header>
+        <ion-row>
+            <ion-col col-10>
+                <ion-slides>
+                    <ion-segment [(ngModel)]="order" color="dark">
+                        <ion-segment-button value="推荐">推荐</ion-segment-button>
+                        <ion-segment-button value="游戏">游戏</ion-segment-button>
+                        <ion-segment-button value="运动">运动</ion-segment-button>
+                        <ion-segment-button value="互联网">互联网</ion-segment-button>
+                        <ion-segment-button value="艺术">艺术</ion-segment-button>
+                        <ion-segment-button value="阅读">阅读</ion-segment-button>
+                        <ion-segment-button value="美食">美食</ion-segment-button>
+                    </ion-segment>
+                </ion-slides>
+            </ion-col>
+            <ion-col col-2>
+                <ion-item item-end (click)="openchoosecard()">
+                    <ion-icon name="arrow-dropdown"></ion-icon>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+
+
+    </ion-header>
+    <ion-content no-padding>
+        <ion-list>
+            <ion-item-sliding *ngFor="let user of users">
+                <ion-item>
+                    <ion-avatar item-start>
+                        <img src="assets/img/avatar/ian-avatar.png">
+                    </ion-avatar>
+                    <ion-title>{{user.username}}</ion-title>
+                    <p>{{user.keys}}</p>
+                    <p>{{user.answers}}回答{{user.follows}}关注</p>
+                    <button ion-button item-end><ion-icon name="add">关注</ion-icon></button>
+                </ion-item>
+            </ion-item-sliding>
+        </ion-list>
+    </ion-content>
+</ion-content>

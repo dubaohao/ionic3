@@ -8,14 +8,15 @@
                     </ion-searchbar>
                 </ion-col>
                 <ion-col col-2>
-                    <button ion-button clear color="dark"><ion-icon name="create"></ion-icon> 提问</button>
+                    <button ion-button clear block color="dark"><ion-icon name="create"></ion-icon> 提问</button>
                 </ion-col>
             </ion-row>
             <ion-row>
-                <ion-segment color="dark" (ionChange)="segmentChanged($event)">
+                <ion-segment [(ngModel)]="order" color="dark">
                     <ion-segment-button value="关注">关注</ion-segment-button>
                     <ion-segment-button value="推荐">推荐</ion-segment-button>
                     <ion-segment-button value="热榜">热榜</ion-segment-button>
+                    <ion-segment-button value="视频">视频</ion-segment-button>
                 </ion-segment>
             </ion-row>
         </ion-grid>
@@ -23,132 +24,102 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-card>
-        <ion-list>
-            <ion-item (click)="open_Interset_user()">发现更多感兴趣的人
-                <ion-icon item-right name="body"></ion-icon>
-                <ion-icon item-right name="arrow-forward"></ion-icon>
-            </ion-item>
+    <div [ngSwitch]="order">
+        <ion-list *ngSwitchCase="'关注'">
+            <ion-card>
+                <ion-list>
+                    <ion-item (click)="open_Interest_User()">发现更多感兴趣的人
+                        <ion-icon item-right name="body"></ion-icon>
+                        <ion-icon item-right name="arrow-forward"></ion-icon>
+                    </ion-item>
+                </ion-list>
+            </ion-card>
+            <ion-card *ngFor="let article of articles" (click)=" itemClick($event,item)">
+                <ion-item>
+                    <ion-avatar item-start>
+                        <img src="{{article.avatar}}">
+                    </ion-avatar>
+                    <ion-row>
+                        <ion-col col-8>
+                            <p>{{article.username}}</p>
+                        </ion-col>
+                        <ion-col col-4>
+                            <p>{{article.updatetime}}</p>
+                        </ion-col>
+                    </ion-row>
+                </ion-item>
+                <ion-item>
+                    <ion-thumbnail item-end>
+                        <img src="{{article.picture}}">
+                    </ion-thumbnail>
+                    <p>{{article.title}}</p>
+                    <p>{{article.things}}</p>
+                </ion-item>
+            </ion-card>
         </ion-list>
-    </ion-card>
 
-    <ion-card>
-        <ion-item>
-            <ion-avatar item-start>
-                <img src="assets/img/avatar/ian-avatar.png">
-            </ion-avatar>
-            <ion-row>
-                <ion-col col-8>
-                    <p>芝麻点小小仙</p>
-                </ion-col>
-                <ion-col col-4>
-                    <p>刚刚</p>
-                </ion-col>
-            </ion-row>
-        </ion-item>
-        <ion-item>
-            <ion-thumbnail item-end>
-                <img src="assets/img/lists/stadium.jpg">
-            </ion-thumbnail>
-            <p>十大经典数据挖掘算法</p>
-            <p>如何解决拜占庭将军问题</p>
-            <p>天涯浪子：作者简介：人工智能爱好者社区专栏作者 博客专栏。。。</p>
-        </ion-item>
-    </ion-card>
 
-    <ion-card>
-        <ion-item>
-            <ion-avatar item-start>
-                <img src="assets/img/avatar/cosima-avatar.jpg">
-            </ion-avatar>
-            <ion-row>
-                <ion-col col-8>
-                    <p>大芝麻</p>
-                </ion-col>
-                <ion-col col-4>
-                    <p>5小时前</p>
-                </ion-col>
-            </ion-row>
-        </ion-item>
-        <ion-item>
-            <ion-thumbnail item-end>
-                <img src="assets/img/profile/profile-2.jpg">
-            </ion-thumbnail>
-            <p>区块链应用的共识机制</p>
-            <p>两周学会开发JavaScript高级课程</p>
-            <p>深度了解Vue、React等框架原理</p>
-        </ion-item>
-    </ion-card>
+        <ion-list *ngSwitchCase="'推荐'" (click)=" itemClick($event,item)">
+            <ion-card *ngFor="let recommand of recommands">
+                <ion-item>
+                    <ion-avatar item-start>
+                        <img src="{{recommand.avatar}}">
+                    </ion-avatar>
+                    <ion-row>
+                        <ion-col col-8>
+                            <p>{{recommand.username}}</p>
+                        </ion-col>
+                        <ion-col col-4>
+                            <p>{{recommand.updatetime}}</p>
+                        </ion-col>
+                    </ion-row>
+                </ion-item>
+                <ion-item>
+                    <ion-thumbnail item-end>
+                        <img src="{{recommand.picture}}">
+                    </ion-thumbnail>
+                    <p>{{recommand.title}}</p>
+                    <p>{{recommand.things}}</p>
+                </ion-item>
+            </ion-card>
+        </ion-list>
 
-    <ion-card>
-        <ion-item>
-            <ion-avatar item-start>
-                <img src="assets/img/avatar/girl-avatar.png">
-            </ion-avatar>
-            <ion-row>
-                <ion-col col-8>
-                    <p>捡火柴的小女孩</p>
-                </ion-col>
-                <ion-col col-4>
-                    <p>半小时前</p>
-                </ion-col>
-            </ion-row>
-        </ion-item>
-        <ion-item>
-            <ion-thumbnail item-end>
-                <img src="assets/img/card/bjork-live.jpg">
-            </ion-thumbnail>
-            <p>我爱美妆视频，欧莱雅</p>
-            <p>女生应该如何保护自己，防狼手册</p>
-            <p>如何看待滴滴事件，是人性黑暗，还是妥协于社会</p>
-        </ion-item>
-    </ion-card>
+        <ion-list *ngSwitchCase="'热榜'" (click)=" itemClick($event,item)">
+            <ion-card *ngFor="let hot of hots">
+                <ion-item>
+                    <p item-start color="secondary">01</p>
+                    <ion-thumbnail item-end>
+                        <img src="{{hot.picture}}">
+                    </ion-thumbnail>
+                    <p>{{hot.title}}</p>
+                    <p>{{hot.hotnum}}点热度</p>
+                </ion-item>
+            </ion-card>
+        </ion-list>
 
-    <ion-card>
-        <ion-item>
-            <ion-avatar item-start>
-                <img src="assets/img/avatar/ian-avatar.png">
-            </ion-avatar>
-            <ion-row>
-                <ion-col col-8>
-                    <p>芝麻点小小仙</p>
-                </ion-col>
-                <ion-col col-4>
-                    <p>22小时前</p>
-                </ion-col>
-            </ion-row>
-        </ion-item>
-        <ion-item>
-            <ion-thumbnail item-end>
-                <img src="assets/img/card/rundmc-live.png">
-            </ion-thumbnail>
-            <p>优秀的男生应该具有什么品质</p>
-            <p>小小仙交给你PUA如何使用，嘿嘿嘿</p>
-            <p>专业感情专家，心理分析师，解决一切疑难杂症</p>
-        </ion-item>
-    </ion-card>
-
-    <ion-card>
-        <ion-item>
-            <ion-avatar item-start>
-                <img src="assets/img/avatar/sarah-avatar.jpg">
-            </ion-avatar>
-            <ion-row>
-                <ion-col col-8>
-                    <p>街机小霸王</p>
-                </ion-col>
-                <ion-col col-4>
-                    <p>12小时前</p>
-                </ion-col>
-            </ion-row>
-        </ion-item>
-        <ion-item>
-            <ion-thumbnail item-end>
-                <img src="assets/img/card/advance-card-map-mario.png">
-            </ion-thumbnail>
-            <p>童年的小游戏</p>
-            <p>JS代码实现团子大战</p>
-            <p>QAQAWEAR连招技能，让敌人防不胜防，秒变王者</p>
-        </ion-item>
-    </ion-card>
+        <ion-list *ngSwitchCase="'视频'" (click)=" itemClick($event,item)">
+            <ion-card *ngFor="let video of videos">
+                <ion-item>
+                    <ion-avatar item-start>
+                        <img src="{{video.avatar}}">
+                    </ion-avatar>
+                    <ion-row>
+                        <ion-col col-8>
+                            <p>{{video.username}}</p>
+                        </ion-col>
+                        <ion-col col-4>
+                            <p>{{video.updatetime}}</p>
+                        </ion-col>
+                    </ion-row>
+                </ion-item>
+                <ion-item>
+                    <ion-thumbnail item-end>
+                        <img src="{{video.picture}}">
+                    </ion-thumbnail>
+                    <p>{{video.title}}</p>
+                    <p>{{video.things}}</p>
+                </ion-item>
+            </ion-card>
+        </ion-list>
+    </div>
 </ion-content>

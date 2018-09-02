@@ -6,13 +6,20 @@
 -->
 <ion-header>
 
-    <ion-navbar>
 
-    </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content padding class="content-background">
+    <ion-searchbar placeholder="搜索知乎内容"></ion-searchbar>
+    <ion-list class="mine-header">
+        <button ion-item (click)="edit()">
+      <ion-thumbnail item-left (click)="viewAvatar();$event.stopPropagation()">
+        <img src="assets/img/avatar/ian-avatar.png">
+      </ion-thumbnail>
+      <div>{{userInfo?.realname}}</div>
+      <div class="description">{{userInfo?.username}}</div>
+    </button>
+    </ion-list>
 </ion-content>

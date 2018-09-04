@@ -6,20 +6,53 @@
 -->
 <ion-header>
 
-
+    <ion-searchbar placeholder="搜索知乎内容"></ion-searchbar>
 
 </ion-header>
 
 
 <ion-content padding class="content-background">
-    <ion-searchbar placeholder="搜索知乎内容"></ion-searchbar>
-    <ion-list class="mine-header">
-        <button ion-item (click)="edit()">
-      <ion-thumbnail item-left (click)="viewAvatar();$event.stopPropagation()">
-        <img src="assets/img/avatar/ian-avatar.png">
-      </ion-thumbnail>
-      <div>{{userInfo?.realname}}</div>
-      <div class="description">{{userInfo?.username}}</div>
-    </button>
-    </ion-list>
+    <ion-card>
+        <ion-list class="mine-header">
+            <button ion-item (click)="edit()">
+              <ion-thumbnail item-left (click)="viewAvatar();$event.stopPropagation()">
+                <img src="assets/img/avatar/ian-avatar.png">
+              </ion-thumbnail>
+              <div>{{userInfo?.realname}}芝麻点小小仙</div>
+              <div class="description">{{userInfo?.username}}北京邮电大学学生</div>
+              <ion-icon name="arrow-forward" item-end></ion-icon>
+            </button>
+        </ion-list>
+    </ion-card>
+    <ion-card>
+        <ion-row>
+            <ion-col><button ion-button block clear>我的创作</button></ion-col>
+            <ion-col><button ion-button block clear>关注</button></ion-col>
+            <ion-col><button ion-button block clear>我的收藏</button></ion-col>
+            <ion-col><button ion-button block clear>最近浏览</button></ion-col>
+        </ion-row>
+    </ion-card>
+    <ion-card>
+        <ion-row>
+            <ion-col col-3><button ion-button block clear><ion-icon name="basketball"></ion-icon><p>我的书架</p></button></ion-col>
+            <ion-col col-3><button ion-button block clear><ion-icon name="basketball"></ion-icon><p>我的Live</p></button></ion-col>
+            <ion-col col-3><button ion-button block clear><ion-icon name="basketball"></ion-icon><p>我的私家课</p></button></ion-col>
+            <ion-col col-3><button ion-button block clear><ion-icon name="basketball"></ion-icon><p>付费咨询</p></button></ion-col>
+
+            <ion-col col-3><button ion-button block clear><ion-icon name="basketball"></ion-icon><p>已购</p></button></ion-col>
+            <ion-col col-3><button ion-button block clear><ion-icon name="basketball"></ion-icon><p>余额礼券</p></button></ion-col>
+            <ion-col col-3><button ion-button block clear><ion-icon name="basketball"></ion-icon><p>免流量服务</p></button></ion-col>
+
+        </ion-row>
+    </ion-card>
+    <ion-card>
+        <ion-row>
+            <ion-col col-3><button ion-button block clear><ion-icon name="basketball"></ion-icon><p>社区建设</p></button></ion-col>
+            <ion-col col-3><button ion-button block clear><ion-icon name="basketball"></ion-icon><p>反馈与帮助</p></button></ion-col>
+            <ion-col col-3><button ion-button block clear><ion-icon name="basketball"></ion-icon><p>夜间模式</p></button></ion-col>
+            <ion-col col-3><button ion-button block clear><ion-icon name="basketball"></ion-icon><p>设置</p></button></ion-col>
+
+        </ion-row>
+    </ion-card>
+
 </ion-content>

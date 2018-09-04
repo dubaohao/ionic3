@@ -6,13 +6,51 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>notices</ion-title>
-  </ion-navbar>
-
+    <ion-navbar>
+        <ion-row>
+            <ion-col>
+                <ion-title>消息</ion-title>
+            </ion-col>
+            <ion-col col-1>
+                <button block clear block>
+                    <ion-icon name="search"></ion-icon>
+                </button>
+            </ion-col>
+        </ion-row>
+    </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
+    <ion-list>
+        <ion-item>
+            <ion-avatar item-start>
+                <ion-icon name="checkbox"></ion-icon>
+            </ion-avatar>
+            私信
+            <p>知乎读书会团队：知乎读书会福利：2元优惠券</p>
+            <ion-icon name="arrow-forward" item-end></ion-icon>
+        </ion-item>
+    </ion-list>
+    <hr>
+    <ion-list>
+        <ion-item>
+            <ion-avatar item-start>
+                <img src="assets/img/avatar/ian-avatar.png">
+            </ion-avatar>
+            爱丽丝
+            <p>互联网笔试过不了，也许你还没有掌握这个套路</p>
+        </ion-item>
+    </ion-list>
+    <ion-list>
+        <ion-item>
+            <ion-avatar item-start>
+                <img src="assets/img/avatar/ian-avatar.png">
+            </ion-avatar>
+            大胖
+            <p>实习才是大学生性价比最高的兼职</p>
+        </ion-item>
+    </ion-list>
+
 
 </ion-content>
